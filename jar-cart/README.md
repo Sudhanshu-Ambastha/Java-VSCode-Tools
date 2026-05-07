@@ -1,47 +1,323 @@
-# JAR Cart 🛒
+# JAR Cart 🛒 (SA)
 
-The **Sovereign dependency manager for Java**. Search, select, and "checkout" JAR files directly into your project's `lib` folder. No Maven, no Gradle, no XML headaches.
+The **sovereign dependency manager for no-build Java projects**.
 
-Perfect for **"No-Build"** setups, student assignments, and high-speed prototyping where you want **total control** over your classpath.
+Search, select, and sync JAR dependencies directly into your project's `lib/` folder — without Maven, Gradle, or heavyweight build tooling.
+
+Designed for:
+
+- No-build Java workflows
+- Student assignments
+- Rapid prototyping
+- Lightweight desktop apps
+- Legacy Java projects
+- Developers who want direct control over their classpath
+
+---
 
 ## 🎥 Tutorial
 
-Here’s a quick walkthrough of how to use JAR Cart:
-![How to setup](https://raw.githubusercontent.com/Sudhanshu-Ambastha/java-no-build-tools/main/jar-cart/images/example.gif)
+Quick walkthrough:
 
-## ✨ New in Version 1.1.0
+![JAR Cart Demo](https://raw.githubusercontent.com/Sudhanshu-Ambastha/java-no-build-tools/main/jar-cart/images/example.gif)
 
-- **Sovereign Manifest (`jar-cart.json`):** Your project now has a dedicated "Source of Truth." View exactly what is being installed and why.
-- **Selective Sync:** Delete unwanted sub-dependencies directly from the JSON tree before syncing to keep your `/lib` folder lean.
-- **Lockfile Stability:** Once you sync, your environment is locked. No unexpected updates or hidden downloads.
-- **Auto-Clean Hygiene:** The system automatically prunes and deletes JARs from your `/lib` folder that are no longer in your manifest.
-- **Smart Version Picker:** Pick specific historical releases of any library.
+---
 
-## 🚀 How to Use
+# ✨ Features
 
-1. **Search & Add:** Press `Ctrl + Shift + J` (or `Cmd + Shift + J` on Mac). Search for a library and pick your version.
-2. **Strategy Selection:** - Choose **Direct JARs Only** for a surgical setup.
-   - Choose **Include All Dependencies** to generate a full, nested tree in your manifest.
-3. **Review & Prune:** The `jar-cart.json` will open automatically. Feel free to delete any sub-dependency blocks you don't need! ✏️
-4. **Sync:** Run `JAR Cart: Sync from jar-cart.json`. This makes your physical `/lib` folder match your JSON perfectly.
-5. **View/Edit:** Click the **🛒 Cart** icon in the Status Bar to jump back into your manifest at any time.
+## 📦 Dependency Management
 
-## 🛠️ Development & Setup
+- Search libraries directly from Maven Central
+- Select exact versions or latest releases
+- Download dependencies directly into `lib/`
+- Supports recursive transitive dependency resolution
 
-If you want to modify JAR Cart or build it from source:
+---
 
-1. **Install the VS Code Extension Generator:**
-   ```bash
-   npm install -g yo generator-code
-   ```
-2. **Clone the repo and install dependencies:**
-   ```bash
-   npm install axios fs-extra xml2js
-   ```
-3. **Launch:**
-   - Open the project in VS Code.
-   - Press `F5` to open the Extension Development Host.
+## 🔄 Dual Manifest Support
 
-## ⚖️ License
+Choose between:
 
-Distributed under the [Apache License 2.0](./LICENSE). See `LICENSE` for more information.
+- `jar-cart.json`
+- `jar-cart.xml`
+
+Convert between formats anytime using:
+
+```txt
+JAR Cart: Switch Manifest Format
+```
+
+---
+
+## 🌳 Recursive Dependency Trees
+
+Use:
+
+```txt
+Include All Dependencies
+```
+
+to automatically resolve and store the full dependency graph from Maven POM metadata.
+
+---
+
+## ✂️ Selective Dependency Pruning
+
+Edit your manifest manually to remove unwanted sub-dependencies before syncing.
+
+This allows tighter control over:
+
+- JAR size
+- Duplicate libraries
+- Logging frameworks
+- Legacy transitive dependencies
+
+---
+
+## 🧹 Auto-Clean Sync
+
+`Sync` ensures your `lib/` folder mirrors your manifest exactly.
+
+Unused JARs are automatically removed to prevent:
+
+- stale dependencies
+- duplicate versions
+- classpath pollution
+
+---
+
+## ⚡ Lightweight Workflow
+
+No:
+
+- Gradle
+- Maven wrappers
+- daemon processes
+- hidden caches
+- generated build folders
+
+Just:
+
+```txt
+manifest -> sync -> lib/
+```
+
+---
+
+# 🚀 Getting Started
+
+## 1. Install the Extension
+
+From VS Code Marketplace:
+
+[JAR Cart SA](https://marketplace.visualstudio.com/items?itemName=SudhanshuAmbastha.jar-cart-sa&utm_source=chatgpt.com)
+
+---
+
+## 2. Add Dependencies
+
+Press:
+
+### Windows / Linux / macOS
+
+```txt
+Ctrl + Shift + J
+```
+
+Search for a library and select a version.
+
+---
+
+## 3. Choose Resolution Strategy
+
+### Direct JARs Only
+
+Downloads only the selected dependency.
+
+### Include All Dependencies
+
+Resolves and downloads the full transitive dependency tree.
+
+---
+
+## 4. Review Manifest
+
+Example:
+
+### JSON
+
+```json
+{
+  "project": "Backend-Stress-Test",
+  "strategy": "Include All Dependencies",
+  "dependencies": [
+    {
+      "group": "org.slf4j",
+      "library": "slf4j-api",
+      "version": "2.0.9",
+      "dependencies": []
+    }
+  ]
+}
+```
+
+### XML
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jarCart>
+  <project>Backend-Stress-Test</project>
+
+  <strategy>Include All Dependencies</strategy>
+
+  <dependencies>
+    <dependency>
+      <group>org.slf4j</group>
+      <library>slf4j-api</library>
+      <version>2.0.9</version>
+    </dependency>
+  </dependencies>
+
+</jarCart>
+```
+
+---
+
+## 5. Sync Dependencies
+
+Run:
+
+```txt
+JAR Cart: Sync Dependencies (lib/)
+```
+
+This downloads all required JARs into:
+
+```txt
+/lib
+```
+
+---
+
+# ⚙️ Extension Settings
+
+## `jar-cart.manifestFormat`
+
+Choose the default manifest format.
+
+Supported values: `json`/`xml`
+
+---
+
+# 📁 Example Project Structure
+
+```txt
+project/
+├── lib/
+│   ├── slf4j-api-2.0.9.jar
+│   └── ...
+│
+├── src/
+│   └── Main.java
+│
+├── jar-cart.json
+└── jar-cart.xml
+```
+
+---
+
+# 🛠️ Development Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Sudhanshu-Ambastha/java-no-build-tools.git
+```
+
+---
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+Dependencies used:
+
+- axios
+- fs-extra
+- xml2js
+- vscode API
+
+---
+
+## Launch Extension
+
+1. Open project in VS Code
+2. Press:
+
+```txt
+F5
+```
+
+This opens the Extension Development Host.
+
+---
+
+## Package Extension
+
+Install VSCE:
+
+```bash
+npm install -g @vscode/vsce
+```
+
+Build extension:
+
+```bash
+vsce package
+```
+
+---
+
+# 🧠 Design Philosophy
+
+JAR Cart focuses on:
+
+- simplicity
+- reproducibility
+- direct dependency control
+- no hidden build systems
+- transparent classpaths
+
+The goal is to make Java dependency management lightweight and understandable again.
+
+---
+
+# ⚖️ License
+
+Licensed under the Apache License 2.0.
+
+See:
+
+[LICENSE](https://github.com/Sudhanshu-Ambastha/java-no-build-tools/blob/main/LICENSE?utm_source=chatgpt.com)
+
+---
+
+# 🌟 Support
+
+If JAR Cart helps your workflow, consider supporting development:
+
+[![Sponsor](https://img.shields.io/badge/Sponsor-JAR%20Cart-pink?style=for-the-badge)](https://github.com/sponsors/Sudhanshu-Ambastha)
+
+You can also help by:
+
+- Starring the repository
+- Reporting issues
+- Suggesting features
+- Contributing improvements
+
+---
+
+Built with 💻 for the Java community.

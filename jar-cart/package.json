@@ -2,7 +2,7 @@
   "name": "jar-cart-sa",
   "displayName": "JAR Cart 🛒 (SA)",
   "description": "Sovereign dependency manager for no-build Java projects. Lockfile support with granular control.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "publisher": "sudhanshuambastha",
   "license": "Apache-2.0",
   "icon": "images/logo.png",
@@ -36,6 +36,20 @@
   ],
   "main": "./extension.js",
   "contributes": {
+    "configuration": {
+      "title": "JAR Cart Settings",
+      "properties": {
+        "jar-cart.manifestFormat": {
+          "type": "string",
+          "enum": [
+            "json",
+            "xml"
+          ],
+          "default": "json",
+          "description": "Select the file format for your dependency manifest."
+        }
+      }
+    },
     "commands": [
       {
         "command": "jar-cart.add",
@@ -47,7 +61,11 @@
       },
       {
         "command": "jar-cart.sync",
-        "title": "JAR Cart: Sync from jar-cart.json"
+        "title": "JAR Cart: Sync Dependencies (lib/)"
+      },
+      {
+        "command": "jar-cart.switchFormat",
+        "title": "JAR Cart: Switch Manifest Format (JSON ↔ XML)"
       },
       {
         "command": "jar-cart.view",

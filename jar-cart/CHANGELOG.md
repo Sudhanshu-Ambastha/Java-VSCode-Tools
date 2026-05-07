@@ -2,6 +2,30 @@
 
 All notable changes to the **JAR Cart** extension are documented in this file.
 
+## [1.2.0] - 2026-05-07
+
+### Added
+
+- **Multi-Format Manifest Support**: Added support for both `jar-cart.json` and `jar-cart.xml`. Users can now choose their preferred configuration style.
+- **Dynamic Format Switching**: New command `JAR Cart: Switch Manifest Format` to instantly convert an existing JSON manifest to XML (or vice-versa) while preserving all dependency trees and strategies.
+- **Smart Project Naming**: The manifest now automatically detects the workspace folder name and updates the `project` field, ensuring the manifest stays in sync with your local directory structure.
+- **Recursive XML Serialization**: Enhanced the XML engine to support deep-nested dependency structures, matching the transparency of the JSON format.
+- **Status Bar Persistence**: The 🛒 icon now provides a persistent shortcut to the active manifest, regardless of its format.
+
+### Changed
+
+- **Zero-Footprint Refactoring**: Removed the `versionMap` and internal tracking variables in favor of a stateless "Source of Truth" model.
+- **Enhanced Save Logic**: The `saveManifest` function now performs a silent merge with existing files, preventing data loss when adding new libraries to large projects.
+- **Intelligent XML Handling**: Configured `xml2js` builders to produce human-readable, pretty-printed XML with standard declarations.
+
+### Fixed
+
+- **XML Tag Integrity**: Fixed a bug where the project name would default to "java" instead of the actual workspace folder name.
+- **Purge Safety**: Added null-checks to the `Purge` command to prevent extension crashes when no manifest is present in the workspace.
+- **Format Consistency**: Fixed an issue where switching formats would sometimes flatten a nested dependency tree; recursion is now fully preserved during migration.
+
+---
+
 ## [1.1.0] - 2026-04-26
 
 ### Added
@@ -22,6 +46,8 @@ All notable changes to the **JAR Cart** extension are documented in this file.
 
 - **Cognitive Complexity**: Refactored the core dependency resolver to improve extension performance and maintainability.
 - **Conflict Resolution**: Fixed an issue where duplicate dependencies with different versions could cause redundant downloads; the system now settles on the highest version found in the tree.
+
+---
 
 ## [1.0.0] - 2026-04-24
 
