@@ -29,7 +29,12 @@ node_modules/**/tsconfig.json
 node_modules/**/MIGRATION_GUIDE.md
 node_modules/**/.npmignore
 node_modules/**/.travis.yml
+node_modules/**/.bin/**
+node_modules/**/obj/**
+node_modules/**/.editorconfig
+node_modules/**/.nycrc
+node_modules/**/bower.json
+node_modules/**/package-lock.json
 
-# Ignore type definitions (User's VS Code doesn't need these to run the JS)
 node_modules/**/*.d.ts
 node_modules/**/*.d.cts
