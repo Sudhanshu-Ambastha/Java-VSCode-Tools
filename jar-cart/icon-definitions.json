@@ -1,0 +1,11 @@
+{
+  "iconDefinitions": {
+    "jar-cart-icon": {
+      "iconPath": "./images/jar-cart.svg"
+    }
+  },
+  "fileNames": {
+    "jar-cart.json": "jar-cart-icon",
+    "jar-cart.xml": "jar-cart-icon"
+  }
+}

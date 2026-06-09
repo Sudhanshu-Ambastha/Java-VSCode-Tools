@@ -2,6 +2,17 @@
 
 All notable changes to the **JAR Cart** extension are documented in this file.
 
+## [1.3.0] - 2026-06-09
+
+### Added
+
+- **Custom File Icon Theme**: Introduced a dedicated visual identity for `jar-cart.json` and `jar-cart.xml` files. The new high-contrast "Jar-in-Cart" icon improves visibility across both Light and Dark VS Code themes.
+
+### Changed
+
+- **Dependency Security**: Bumped `axios` from 1.15.2 to 1.16.0 to leverage latest security and performance improvements.
+- **Toolchain Upgrade**: Updated `@vscode/vsce` to v3.9.2 to ensure compatibility with the latest marketplace packaging standards.
+
 ## [1.2.0] - 2026-05-07
 
 ### Added

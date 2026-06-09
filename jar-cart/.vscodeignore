@@ -38,3 +38,8 @@ node_modules/**/package-lock.json
 
 node_modules/**/*.d.ts
 node_modules/**/*.d.cts
+node_modules/**
+!node_modules/axios/**
+!node_modules/fs-extra/**
+!node_modules/xml2js/**
+!node_modules/xmlbuilder/**
