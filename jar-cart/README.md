@@ -112,6 +112,12 @@ From VS Code Marketplace:
 
 [JAR Cart SA](https://marketplace.visualstudio.com/items?itemName=SudhanshuAmbastha.jar-cart-sa&utm_source=chatgpt.com)
 
+## ⚡ Looking for more power?
+
+While this extension simplifies dependency management inside VS Code, you can also use the standalone jar-cart CLI for advanced build automation, project-locked JDKs, and CI/CD pipelines.
+
+- [Check out the `jar-cart` CLI on GitHub](https://github.com/Sudhanshu-Ambastha/jar-cart)
+
 ---
 
 ## 2. Add Dependencies
