@@ -1,4 +1,4 @@
-# Java No-Build Tools 🛒☕
+# Java VSCode Tools 🛒☕
 
 This repository hosts multiple VS Code extensions for lightweight Java development without Maven/Gradle.
 
